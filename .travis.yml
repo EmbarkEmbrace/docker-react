@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t actuallytired/docker-react -f dockerfile.dev .
+
+script:
+  - docker run -e CI=true actuallytired/docker-react npm run test
